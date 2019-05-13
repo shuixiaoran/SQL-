@@ -1,0 +1,54 @@
+# 项目一
+
+## 创建表并插入数据
+```
+CREATE TABLE email (
+ID INT NOT NULL PRIMARY KEY,
+Email VARCHAR(255)
+);
+INSERT INTO email VALUES('1','a@b.com');
+INSERT INTO email VALUES('2','c@d.com');
+INSERT INTO email VALUES('3','a@b.com');
+```
+
+查找重复的电子邮箱
+
+```
+SELECT email FROM email GROUP BY email having count (Email)>1;
+```
+
+# 项目二
+如果一个国家的面积超过300万平方公里，或者(人口超过2500万并且gdp超过2000万)，那么这个国家就是大国家。 编写一个SQL查询，输出表中所有大国家的名称、人口和面积。
+## 创建表并插入数据
+
+```
+CREATE TABLE World (
+name VARCHAR(50) NOT NULL,
+continent VARCHAR(50) NOT NULL,
+area INT NOT NULL,
+population INT NOT NULL,
+gdp INT NOT NULL
+);
+INSERT INTO World
+  VALUES('Afghanistan','Asia',652230,25500100,20343000);
+INSERT INTO World 
+  VALUES('Albania','Europe',28748,2831741,12960000);
+INSERT INTO World 
+  VALUES('Algeria','Africa',2381741,37100000,188681000);
+INSERT INTO World
+  VALUES('Andorra','Europe',468,78115,3712000);
+INSERT INTO World
+  VALUES('Angola','Africa',1246700,20609294,100990000);
+
+select * from World;
+```
+
+查找大国家
+
+```
+SELECT name,populaiton,area FROM World
+where area>3000000 or(population>25000000 and gdp>20000000);
+```
+结果
+'Algeria', '37100000', '2381741'
+'Afghanistan', '25500100', '652230'
